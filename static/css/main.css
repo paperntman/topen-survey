@@ -30,6 +30,7 @@ button:hover {
 .textbox {
     font-size: 18px;
     margin: 10px 0;
+    line-height: 30px;
 }
 
 /* 질문 영역 스타일 */

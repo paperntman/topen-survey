@@ -10,7 +10,7 @@
     </head>
     <body>
         <Button id="reload">다른 문제 보기</Button>
-        <p class="textbox">{{text}}</p>
+        <p class="textbox">{{ text|safe }}</p>
         <Button id="showQ">문제 보기</Button>
         <form method="post" action="/post" id="form">
             <div class="Q hidden" id="Q1">
