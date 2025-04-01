@@ -68,4 +68,4 @@ def post():
     return jsonify({"message": "Data saved successfully", "filename": filename})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=80)
+    app.run(debug=False, port=80)
