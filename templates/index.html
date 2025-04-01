@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>{{id}}</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' type='text/css' media='screen' href='/static/css/main.css'>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <Button id="reload">다른 문제 보기</Button>
+        <p class="textbox">{{text}}</p>
+        <Button id="showQ">문제 보기</Button>
+        <form method="post" action="/post" id="form">
+            <div class="Q hidden" id="Q1">
+                <p><br>글의 주제를 선택해 주세요!</p>
+                <input type="radio" name="Q1" value="1" id="Q1_1" required>
+                <label for="Q1_1">{{Q1_1}} <br>
+                </label>
+                <input type="radio" name="Q1" value="2" id="Q1_2">
+                <label for="Q1_2">{{Q1_2}} <br>
+                </label>
+                <input type="radio" name="Q1" value="3" id="Q1_3">
+                <label for="Q1_3">{{Q1_3}} <br>
+                </label>
+                <input type="radio" name="Q1" value="4" id="Q1_4">
+                <label for="Q1_4">{{Q1_4}} <br>
+                </label>
+                <input type="radio" name="Q1" value="5" id="Q1_5">
+                <label for="Q1_5">{{Q1_5}} <br>
+                </label>
+                <input type="radio" name="Q1" value="none">
+                <label for="Q1_1">모르겠어요</label>
+                <div class="tictactoe">
+                    <p class="textbox" , id="Q2">{{Q2}}</p>
+                    <input type="radio" , name="Q2" value="O" required>
+                    <label for="Q2">O</label>
+                    <input type="radio" , name="Q2" value="X">
+                    <label for="Q2">X <br>
+                    </label>
+                    <input type="radio" , name="Q2" value="none">
+                    <label for="Q2">모르겠어요</label>
+                </div>
+                <div class="tictactoe">
+                    <p class="textbox" , id="Q3">{{Q3}}</p>
+                    <input type="radio" , name="Q3" value="O" required>
+                    <label for="Q3">O</label>
+                    <input type="radio" , name="Q3" value="X">
+                    <label for="Q3">X <br>
+                    </label>
+                    <input type="radio" , name="Q3" value="none">
+                    <label for="Q3">모르겠어요</label>
+                </div>
+                <div class="tictactoe">
+                    <p class="textbox" , id="Q4">{{Q4}}</p>
+                    <input type="radio" , name="Q4" value="O" required>
+                    <label for="Q4">O</label>
+                    <input type="radio" , name="Q4" value="X">
+                    <label for="Q4">X <br>
+                    </label>
+                    <input type="radio" , name="Q4" value="none">
+                    <label for="Q4">모르겠어요</label>
+                </div>
+                <div class="tictactoe">
+                    <p class="textbox" , id="Q5">{{Q5}}</p>
+                    <input type="radio" , name="Q5" value="O" required>
+                    <label for="Q5">O</label>
+                    <input type="radio" , name="Q5" value="X">
+                    <label for="Q5">X <br>
+                    </label>
+                    <input type="radio" , name="Q5" value="none">
+                    <label for="Q5">모르겠어요</label>
+                </div>
+                <Button id="submit" class="hidden">제출</Button>
+        </form>
+        <script src='/static/js/main.js'></script>
+    </body>
+</html>
