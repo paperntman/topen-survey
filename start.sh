@@ -1,4 +1,3 @@
 #!/bin/bash
 
-clear
-gunicorn --bind 0.0.0.0:80 main:app
+sudo tutorial-env/bin/gunicorn main:app
