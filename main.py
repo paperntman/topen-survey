@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 import json
 import os
 from datetime import datetime
@@ -17,18 +17,20 @@ global count
 count = 0
 
 # json 폴더에서 랜덤한 JSON 파일 선택
-def get_random_json():
+def get_random_json(page):
     global count
     files = [f for f in os.listdir(json_folder) if f.endswith('.json')]  # JSON 파일 목록
     if not files:
         return None  # JSON 파일이 없으면 None 반환
-    random_file = random.choice(files)  # 랜덤으로 파일 선택
-    file_path = os.path.join(json_folder, random_file)  # 파일 경로 생성
-
-    # 선택한 JSON 파일 읽기
-    with open(file_path, 'r') as json_file:
-        data = json.load(json_file)  # JSON 데이터 로드
-    return data  # 데이터 반환
+    random.shuffle(files)
+    for i in files :
+        file_path = os.path.join(json_folder, i)  # 파일 경로 생성    
+        with open(file_path, 'r') as json_file:
+            data = json.load(json_file)
+            if(int(data['id'], 2) & int(page, 2) != 0):
+                continue
+            return data
+    return None
 
 app = Flask(__name__)
 
@@ -36,10 +38,13 @@ app = Flask(__name__)
 def home():
     ip_address = request.remote_addr  # 클라이언트의 IP 주소 가져오기
     logger.info(f"Home page accessed from IP: {ip_address}")
-    
-    data = get_random_json()
+    page = request.args.get('page', '00000000')
+    if(page=='11111111'):
+        return render_template('39.html')
+
+    data = get_random_json(page)
     if data is None:
-        return jsonify({"error": "No data available"}), 404
+        return render_template('39.html')
     return render_template('index.html', text=str(data["text"]).replace("\n", "<br>"), 
                            Q1_1=str(data["q1_1"]), Q1_2=str(data["q1_2"]), 
                            Q1_3=str(data["q1_3"]), Q1_4=str(data["q1_4"]), 
@@ -65,7 +70,11 @@ def post():
         json.dump(data, json_file)
     
     logger.info(f"Data saved: {filename}")
-    return jsonify({"message": "Data saved successfully", "filename": filename})
+
+    # 데이터 저장 후 리다이렉트할 URL 반환
+    redirect_url = url_for('home', page=str(bin(int(str(data['page']), 2) + int(str(data['id']), 2)))[2:].zfill(8))
+    return jsonify({"redirect_url": redirect_url})  # JSON 형식으로 리다이렉트 URL 반환
+
 
 if __name__ == '__main__':
-    app.run(debug=False, port=80)
+    app.run(debug=True, port=80)
