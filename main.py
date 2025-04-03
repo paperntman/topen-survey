@@ -34,7 +34,7 @@ def get_random_json(page):
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/page', methods=['GET'])
 def home():
     ip_address = request.remote_addr  # 클라이언트의 IP 주소 가져오기
     logger.info(f"Home page accessed from IP: {ip_address}")
@@ -51,6 +51,10 @@ def home():
                            Q1_5=str(data["q1_5"]), Q2=str(data['q2']), 
                            Q3=str(data['q3']), Q4=str(data['q4']), 
                            Q5=str(data['q5']), id=str(data['id']))
+
+@app.route('/')
+def start():
+    return render_template('start.html')
 
 @app.route('/post', methods=['POST'])
 def post():
@@ -77,4 +81,4 @@ def post():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, port=80)
+    app.run(debug=False, port=8000)
