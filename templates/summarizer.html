@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 텍스트 요약기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.1.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/static/assets/index-DZSNjgv0.js"></script>
+  <link rel="stylesheet" crossorigin href="/static/assets/index-D3SqKztj.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI 텍스트 요약기</h1>
+            <p>아래에 텍스트를 입력하면 AI가 간결하게 요약해 드립니다.</p>
+        </header>
+
+        <main>
+            <div class="textarea-container">
+                <label for="input-text" class="sr-only">요약할 텍스트</label>
+                <textarea id="input-text" placeholder="요약할 텍스트를 여기에 붙여넣으세요..." aria-label="요약할 텍스트"></textarea>
+            </div>
+            <div class="action-buttons-container">
+                <button id="sample-text-button" aria-live="polite">
+                    <span class="button-text">샘플 텍스트</span>
+                    <div class="spinner" style="display: none;"></div>
+                </button>
+                <button id="summarize-button" aria-live="polite">
+                    <span class="button-text">요약하기</span>
+                    <div class="spinner" style="display: none;"></div>
+                </button>
+                <button id="summarize-alternative-button" aria-label="대안 요약 실행" aria-live="polite">
+                    <span class="button-icon">✨</span>
+                    <div class="spinner" style="display: none;"></div>
+                </button>
+            </div>
+            <div class="textarea-container output-container">
+                 <label for="output-text" class="sr-only">요약 결과</label>
+                <textarea id="output-text" placeholder="요약 결과가 여기에 표시됩니다..." readonly aria-label="요약 결과"></textarea>
+            </div>
+
+            <div id="star-rating-area" aria-live="polite">
+                <p id="star-rating-question">이 서비스의 품질에 대한 별점을 남겨주세요:</p>
+                <div id="star-container" role="radiogroup" aria-labelledby="star-rating-question">
+                    <span class="star" data-value="1" role="radio" aria-label="1점" aria-checked="false" tabindex="0">&#9734;</span>
+                    <span class="star" data-value="2" role="radio" aria-label="2점" aria-checked="false" tabindex="0">&#9734;</span>
+                    <span class="star" data-value="3" role="radio" aria-label="3점" aria-checked="false" tabindex="0">&#9734;</span>
+                    <span class="star" data-value="4" role="radio" aria-label="4점" aria-checked="false" tabindex="0">&#9734;</span>
+                    <span class="star" data-value="5" role="radio" aria-label="5점" aria-checked="false" tabindex="0">&#9734;</span>
+                </div>
+                <button id="submit-star-rating-button" style="display: none;">별점 보내기</button>
+                <p id="star-rating-thanks" style="display: none;">별점 감사합니다!</p>
+            </div>
+
+            <div id="feedback-section" aria-live="polite">
+                <p id="feedback-question">요약 기능에 만족하셨다면, 다음에도 이용할 건가요?</p>
+                <div id="feedback-buttons-container">
+                    <button id="feedback-yes-button" type="button">네</button>
+                    <button id="feedback-no-button" type="button">아니요</button>
+                </div>
+                <p id="feedback-thanks">답변해주셔서 감사합니다!</p>
+            </div>
+        </main>
+        <footer>
+            <p>AI 기반 요약 서비스</p>
+        </footer>
+    </div>
+</body>
+</html>
