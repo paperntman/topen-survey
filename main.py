@@ -27,7 +27,7 @@ if not os.path.exists('post'):
 
 # --- Google Generative AI 설정 ---
 API_KEY_PROVIDED = "YOUR_API_KEY_HERE"  # 여기에 실제 API 키를 입력하세요.
-MODEL_NAME = "gemini-1.5-flash"
+MODEL_NAME = "gemini-2.0-flash"
 
 try:
     api_key = os.environ.get("GEMINI_API_KEY", API_KEY_PROVIDED)
@@ -109,6 +109,12 @@ SAMPLE_TEXT_GENERATION_PROMPT = (
     "지문 내용만 응답으로 생성하고, 다른 부가적인 설명은 포함하지 마세요."
 )
 
+@app.route('/prompt')
+def show_my_cat_image():
+    """/my-cat URL로 접속 시 특별한 고양이 이미지를 보여주는 페이지"""
+    logger.info("'/my-cat' 이미지 페이지 요청 수신.")
+    # templates 폴더에 있는 show_image.html 파일을 렌더링하여 사용자에게 보여줍니다.
+    return render_template('show_image.html')
 
 # ==============================================================================
 # 2. 헬퍼 함수
