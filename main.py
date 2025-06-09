@@ -364,4 +364,4 @@ def handle_star_feedback():
 if __name__ == '__main__':
     # debug=True는 개발 중에만 사용하고, 실제 배포 시에는 False로 변경하세요.
     # host='0.0.0.0'은 로컬 네트워크의 다른 장치에서 접근할 수 있게 합니다.
-    app.run(debug=False, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=80)
